@@ -5,7 +5,7 @@ import openai
 app = Flask(__name__)
 
 # Set up OpenAI API credentials
-openai.api_key = 'API Key'
+openai.api_key = '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'
 
 
 # Define the default route to return the index.html file
@@ -24,7 +24,10 @@ def api():
     completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "user", "content": message}
+        {"role": "system", "content": "My name is Bao GPT, an artificial mental health therapist"},
+        {"role": "user", "content": "I have mental health problem and I need your help"},
+        {"role": "assistant", "content": "I am a good adviser and good listener to understand you"},
+        {"role": "user", "content": "I want you to be friendly as a friend"}
     ]
     )
     if completion.choices[0].message!=None:
